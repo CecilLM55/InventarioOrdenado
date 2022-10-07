@@ -1,4 +1,3 @@
-
 class Inventario {
 
     constructor() {
@@ -12,7 +11,29 @@ class Inventario {
     }
 
     eliminar(codigo) {
+        let primero = 0;
+        let medio = 0;
+        let ultimo = this.inventario.length - 1;
+
+        while(primero <= ultimo) {
+            medio = Math.floor((primero + ultimo) / 2);
+
+            if (this.inventario[medio].getCodigo() === codigo) {
+
+                for(let a = medio; a < ultimo; a++) {
+                    this.inventario[a] = this.inventario[a + 1];
+                }
+                this.inventario.pop();
+
+            } else if (this.inventario[medio].getCodigo() > codigo) {
+                ultimo = medio - 1;
+            } else {
+                primero = medio + 1;
+            }
+        }
         
+        return null;
+ /*       
         for(let i = 0; i < this.inventario.length; i++) {
             if(codigo === this.inventario[i].getCodigo()) {
 
@@ -22,23 +43,37 @@ class Inventario {
                 this.inventario.pop();
             }
         }
-
-
+*/
+/*
+for(let a = i; a < this.inventario.length; a++) {
+                    this.inventario[a] = this.inventario[a + 1];
+                }
+*/
     }
 
     buscar(codigo) {
+        let primero = 0;
+        let medio = 0;
+        let ultimo = this.inventario.length - 1;
 
-        for(let i = 0; i <= this.inventario.length -1; i++) {
-            if(codigo === this.inventario[i].getCodigo()) {
-                return this.inventario[i];
-            } 
-        } 
+        while(primero <= ultimo) {
+            medio = Math.floor((primero + ultimo) / 2);
 
+            if (this.inventario[medio].getCodigo() === codigo) {
+                return this.inventario[medio];
+            } else if (this.inventario[medio].getCodigo() > codigo) {
+                ultimo = medio - 1;
+            } else {
+                primero = medio + 1;
+            }
+        }
+        
         return null;
-
     }
+    
 
     listado() {
+
         let lista = '';
         this.inventario.forEach((producto) => {
             lista += producto.info();
