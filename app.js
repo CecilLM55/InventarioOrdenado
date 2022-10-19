@@ -7,7 +7,7 @@ agregar.addEventListener('click', () => {
    let cantidad = document.getElementById('txtCantidad').value;
    let costo = document.getElementById('txtCosto').value;
    let nuevo = new Producto(codigo, nombre, cantidad, costo);
-   miInv.agregar(nuevo);
+   miInv.agregar(nuevo, codigo);
    document.getElementById("divDetalles").innerHTML += '<p> Se ha agregado un producto</p>';
 });
 

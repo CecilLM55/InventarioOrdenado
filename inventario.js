@@ -9,7 +9,7 @@ class Inventario {
        /* this.inventario.push(producto);
        */
 
-       if((this.inventario === 0)) {
+       if((this.inventario === 0) && (this.inventario[this.inventario.length-1].getCodigo() < codigo)) {
         this.inventario.push(producto);
        } else {
 
@@ -26,7 +26,6 @@ class Inventario {
        }
 
     }
-    
 
     eliminar(codigo) {
         let primero = 0;
